@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Review;
 use App\Models\lecture;
 use App\Models\Lecturer;
 use App\Models\Department;
@@ -12,6 +13,23 @@ class LecturerController extends Controller
 {
     public function show($id){
         $Lecturer = Lecturer::where('lecture_id', $id)->get();
+        $stars = 0;
+        foreach ($Lecturer as  $value) {
+            $review = Review::where('lecturers_id', $value["id"])->get();
+            $value['reviews_count'] = count($review);
+            
+            foreach ($review as $val) {
+                $stars = $val['rate'] + $stars;
+            }
+            if(count($review) > 0){
+                $value['stars'] = round($stars/count($review));
+            }else{
+                $value['stars'] = 0;
+            }
+            
+            
+        }
+        // dd($Lecturer);
         return view('lecturer.lecturers', [
             'lecturer'=> $Lecturer, 
             ]);
@@ -28,7 +46,7 @@ public function store(Request $request)
     // file validation
     $validator      =   Validator::make($request->all(),
         ['name'      =>   'required|max:100|string',
-        'employee_number'      =>   'required|max:12|integer',
+        'employee_number'      =>   'required|integer',
         'course'      =>   'required',
         'email'      =>   'required|unique:Lecturers,email']
     );
@@ -48,11 +66,10 @@ public function store(Request $request)
     $lecturer->employee_number = request('employee_number');
     $lecturer->lecture_id = request('course');
     $lecturer->department_id = lecture::findOrFail($lecturer->lecture_id)->department_id;
-    $lecturer->reviews = 1;
     
     
     $lecturer->save();
-    return redirect("/courses/$lecturer->course")->with('mssg', 'Lecturer Profile Created Successfully');
+    return redirect("/courses/$lecturer->lecture_id")->with('mssg', 'Lecturer Profile Created Successfully');
 
     }
 }

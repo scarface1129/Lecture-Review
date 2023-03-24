@@ -159,13 +159,16 @@
                                                     class="properties-footer d-flex justify-content-between align-items-center">
                                                     <div class="review">
                                                         <div class="rating">
+                                                            @if($lect->stars > 0)
+                                                            @for ($i = 0; $i < $lect->stars; $i++)
                                                             <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star"></i>
-                                                            <i class="fas fa-star-half-alt"></i>
+                                                            @endfor
+                                                            @else
+                                                                <p>No Reviews yet</p>
+                                                            @endif
+                                                            
                                                         </div>
-                                                        <p>(<span>120</span> Review)</p>
+                                                        <p>(<span>{{$lect->reviews_count}}</span> Review)</p>
                                                     </div>
                                                     <div class="price">
                                                         <a href="{{ route('review',$lect->id) }}" class="btn">Review</a>
