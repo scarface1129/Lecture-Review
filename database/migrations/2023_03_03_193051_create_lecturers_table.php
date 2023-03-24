@@ -20,7 +20,8 @@ class CreateLecturersTable extends Migration
             $table->Integer('department_id')->unsigned();
             $table->foreign('department_id')->references('id')->on('departments')->onDelete('CASCADE');
             $table->integer('lecture_id')->unsigned();
-            $table->string('reviews');
+            // $table->integer('reviews_id')->unsigned();
+            // $table->string('reviews');
             $table->string('email')->unique();
             $table->timestamps();
 

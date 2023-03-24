@@ -21,7 +21,7 @@ class CreateReviewsTable extends Migration
             $table->Integer('lecturers_id')->unsigned();
             $table->foreign('student_id')->references('id')->on('users')->onDelete('CASCADE');
             $table->foreign('lecturers_id')->references('id')->on('lecturers')->onDelete('CASCADE');
-            $table->timestamp('created_at');
+            $table->timestamps();
 
         });
     }

@@ -34,10 +34,10 @@
             <div class="register-form text-center">
 
                 <div class="register-heading">
-                    <span>Sign Up</span>
-                    <p>Create your account to get full access</p>
+                    <span>Create Lecturer Profile</span>
+                    <p></p>
                 </div>
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('lecturer_create') }}">
                     @csrf
                     <div class="input-box">
                         <div class="single-input-fields">
@@ -60,42 +60,35 @@
                         </div>
                         
                         <div class="single-input-fields">
-                            <label for="reg_number" class="col-md-4 col-form-label text-md-end">{{ __('Registration Number') }}</label>
-                            <input id="reg_number" type="`text" class="form-control @error('email') is-invalid @enderror" name="reg_number" value="{{ old('reg_number') }}" required autocomplete="reg_number">
-                            @error('reg_number')
+                            <label for="employee_number" class="col-md-4 col-form-label text-md-end">{{ __('Employee Number') }}</label>
+                            <input id="employee_number" type="`text" class="form-control @error('email') is-invalid @enderror" name="employee_number" value="{{ old('employee_number') }}" required autocomplete="employee_number">
+                            @error('employee_number')
                                 <span class="invalid-feedback" style="color:red;" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
                         <div class="single-input-fields">
-                            <label for="dept" class="col-md-4 col-form-label text-md-end">{{ __('Department') }}</label>
-                            <select id="dept" class="form-control  @error('dept') is-invalid @enderror" name="dept" value="{{ old('dept') }}" required autocomplete="dept">
-                                <option>Departments</option>
-                                @foreach($department as $department)
-                                <option value="{{ $department->id }}">{{$department->name}}</option>
+                            <label for="course" class="col-md-4 col-form-label text-md-end">{{ __('Course') }}</label>
+                            <select id="course" class="form-control  @error('course') is-invalid @enderror" name="course" value="{{ old('course') }}" required autocomplete="course">
+                                <option>Courses</option>
+                                @foreach($courses as $course)
+                                <option value="{{ $course->id }}">{{$course->name}}, {{$course->course_code}}</option>
                                 @endforeach
                                 
                             </select>
-                            @error('dept')
+                            {{-- <input > --}}
+                            @error('course')
                                 <span class="invalid-feedback" style="color:red;" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
                             @enderror
                         </div>
+                        
                         <div class="single-input-fields">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
-                            @error('password')
-                            <span class="invalid-feedback" style="color:red;" role="alert">
-                                <strong>{{ $message }}</strong>
-                            </span>
-                            @enderror
-                        </div>
-                        <div class="single-input-fields">
-                            <label for="password-confirm" class="col-md-4 col-form-label text-md-end">{{ __('Confirm Password') }}</label>
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                            @error('password')
+                            <label for="department" class="col-md-4 col-form-label text-md-end">{{ __('Department') }}</label>
+                            <input id="department" type="text" class="form-control" placeholder="Automatically filled based on the course selected " disabled name="department" required autocomplete="department">
+                            @error('department')
                             <span class="invalid-feedback" style="color:red;" role="alert">
                                 <strong>{{ $message }}</strong>
                             </span>
@@ -103,9 +96,9 @@
                         </div>
                     </div>
                     <div class="register-footer">
-                        <p> Already have an account? <a href="{{ route('login') }}"> Login</a> here</p>
+                        <p></p>
                         <button type="submit" class="btn">
-                            {{ __('Register') }}
+                            {{ __('Create') }}
                         </button>
                     </div>
                 </form>

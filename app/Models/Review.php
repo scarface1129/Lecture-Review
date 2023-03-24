@@ -13,7 +13,7 @@ class Review extends Model
         'student_id',
         'lecturers_id',
         'department',
-        'date',
+        // 'date',
     ];
     use HasFactory;
 }

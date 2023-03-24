@@ -102,15 +102,11 @@
                                         <ul id="navigation">
                                             <li><a href="{{ route('home') }}">Home</a></li>
                                             <li><a href="{{ route('department') }}">Departments</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="#">Pages</a>
+                                            
+                                            <li><a href="#">Admin</a>
                                                 <ul class="submenu">
-                                                    <li><a href="login.html">login</a></li>
-                                                    <li><a href="cart.html">Cart</a></li>
-                                                    <li><a href="checkout.html">Checkout</a></li>
-                                                    <li><a href="book-details.html">book Details</a></li>
-                                                    <li><a href="blog_details.html">Blog Details</a></li>
-                                                    <li><a href="elements.html">Element</a></li>
+                                                    <li><a href="{{ route('lecturer_create') }}">Create-Lecturer</a></li>
+                                                    <li><a href="{{ route('lecture_create') }}">Create-Courses</a></li>
                                                 </ul>
                                             </li>
                                             <li><a href="blog.html">Blog</a></li>

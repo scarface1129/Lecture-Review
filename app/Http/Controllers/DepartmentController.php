@@ -10,7 +10,7 @@ class DepartmentController extends Controller
 {
     public function department() {
         $Department = Department::all();
-        return view('department', [
+        return view('department.department', [
             'Departments'=> $Department, 
             ]);
     }
