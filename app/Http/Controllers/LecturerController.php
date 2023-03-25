@@ -13,10 +13,10 @@ class LecturerController extends Controller
 {
     public function show($id){
         $Lecturer = Lecturer::where('lecture_id', $id)->get();
-        $stars = 0;
         foreach ($Lecturer as  $value) {
             $review = Review::where('lecturers_id', $value["id"])->get();
             $value['reviews_count'] = count($review);
+            $stars = 0;
             
             foreach ($review as $val) {
                 $stars = $val['rate'] + $stars;
