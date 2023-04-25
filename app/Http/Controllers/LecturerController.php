@@ -6,6 +6,7 @@ use App\Models\Review;
 use App\Models\lecture;
 use App\Models\Lecturer;
 use App\Models\Department;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
@@ -32,6 +33,7 @@ class LecturerController extends Controller
         // dd($Lecturer);
         return view('lecturer.lecturers', [
             'lecturer'=> $Lecturer, 
+             
             ]);
     }
 
@@ -48,10 +50,12 @@ public function store(Request $request)
         ['name'      =>   'required|max:100|string',
         'employee_number'      =>   'required|integer',
         'course'      =>   'required',
-        'email'      =>   'required|unique:Lecturers,email']
+        'email'      =>   'required|unique:Lecturers,email',
+        'image'      =>   'required|mimes:jpeg,png,jpg,bmp|max:2048',
+        ]
     );
-    
-    // if validation fails
+    // dd($request->file('image'));
+        // if validation fails
     if($validator->fails()) {
         return back()->withErrors($validator);
     }
@@ -59,17 +63,23 @@ public function store(Request $request)
     //     return back()->withErrors(['email'=> 'Email Already  Exist']);
     // }
     // if validation success
-    if(request('employee_number')) {
+    if(request('employee_number') && $file   =   $request->file('image')) {
     $lecturer = new Lecturer();
     $lecturer->name = request('name');
     $lecturer->email = request('email');
+    $name      =   time().time().'.'.$file->getClientOriginalExtension();
+    $lecturer->image = $name;
     $lecturer->employee_number = request('employee_number');
     $lecturer->lecture_id = request('course');
     $lecturer->department_id = lecture::findOrFail($lecturer->lecture_id)->department_id;
     
     
     $lecturer->save();
-    return redirect("/courses/$lecturer->lecture_id")->with('mssg', 'Lecturer Profile Created Successfully');
+    $target_path    =   public_path('/uploads/');
+    if($file->move($target_path, $name)) {
+        return redirect("/courses/$lecturer->lecture_id")->with('mssg', 'Lecturer Profile Created Successfully');
+    }
+    
 
     }
 }

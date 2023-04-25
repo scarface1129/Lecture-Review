@@ -11,6 +11,7 @@ class Lecturer extends Model
     protected $fillable = [
         'name',
         'email',
+        'image',
         'Employee_number',
         'department',
     ];

@@ -3,10 +3,11 @@
 use App\Models\Department;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\LectureController;
 use App\Http\Controllers\LecturerController;
 use App\Http\Controllers\DepartmentController;
-use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,9 +23,9 @@ Route::get('/courses/{id}', [LectureController::class,'show'])->name('lecture')-
 Route::get('/lecturer/{id}', [LecturerController::class,'show'])->name('lecturer')->middleware('auth');
 Route::get('/review/{id}', [ReviewController::class,'show'])->name('review')->middleware('auth');
 Route::post('/review', [ReviewController::class,'store'])->name('review_store')->middleware('auth');
-Route::get('/', function () {return view('welcome');})->name('home');
+// Route::get('/', function () {return view('welcome');})->name('home');
 Auth::routes();
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('departments', [DepartmentController::class,'department'])->name('department')->middleware('auth');
 Route::get('/lecturers/create', [LecturerController::class,'create'])->name('lecturer_create')->middleware('auth');
 Route::post('/lecturers/create', [LecturerController::class,'store'])->name('lecturer_store')->middleware('auth');
