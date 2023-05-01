@@ -38,8 +38,16 @@ class ReviewController extends Controller
         // if validation success
         if(request('comment')) {
         $Review = new Review();
-        $Review->comment = request('comment');
+        $Review->learnt = request('learnt');
+        $Review->understand = request('understand');
+        $Review->internet = request('internet');
+        $Review->approachable = request('approachable');
+        $Review->assignment = request('assignment');
+        $Review->respect = request('respect');
+        $Review->effective = request('effective');
+        $Review->explanation = request('explanation');
         $Review->rate = request('rate');
+        $Review->comment = request('comment');
         $Review->student_id = request('student_id');
         $Review->lecturers_id = request('lecturer_id');
         $course_id = request('course_id');

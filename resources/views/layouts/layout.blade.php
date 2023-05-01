@@ -42,7 +42,7 @@
 
                                         <form action="#" class="form-box">
                                             <input type="text" name="Search"
-                                                placeholder="Search book by author or publisher">
+                                                placeholder="Search book by Department or Courses">
                                             <div class="search-icon">
                                                 <i class="ti-search"></i>
                                             </div>

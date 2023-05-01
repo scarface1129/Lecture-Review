@@ -136,6 +136,86 @@
                         <form class="form-contact contact_form" action="{{ route('review_store') }}" method="post">
                             @csrf
                             <div class="row">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Did you learn anything in this lectures?</label>
+                                        <select id="" name="Did you learn anything in this lectures?">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                        </select>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Was the lectures understandable?</label>
+                                        <select id="" name="Was the lectures understandable?">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                        </select>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Are there any internet support to this lectures?</label>
+                                        <select id="" name="Are there any internet support to this lectures?">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                        </select>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Are your lecturers approachable?</label>
+                                        <select id="" name="Are your lecturers approachable?">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                        </select>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Did you receive any assignment after the lectures?</label>
+                                        <select id="" name="Did you receive any assignment after the lectures?">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                        </select>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Do you respect your lecturers?</label>
+                                        <select id="" name="Do you respect your lecturers?">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                        </select>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>How effective is the lectures to your learning?</label>
+                                        <select id="" name="How effective is the lectures to your learning?">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                        </select>
+                                    
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Does the lecturer clarify his explanation on his course?</label>
+                                        <select id="" name="Does the lecturer clarify his explanation on his course?">
+                                        <option value="true">Yes</option>
+                                        <option value="false">No</option>
+                                        </select>
+                                    
+                                    </div>
+                                </div>
                                 <div class="col-12">
                                     <div class="form-group">
                                         <textarea class="form-control w-100" name="comment" id="message" cols="30"
@@ -159,6 +239,7 @@
                                         <input class="form-control valid" value="{{$course_id}}" name="course_id" hidden id="">
                                     </div>
                                 </div>
+                                
                                 <div id="half-stars-example">
                                     <div class="rating-group">
                                         <input class="rating__input rating__input--none" checked name="rate" id="rating2-0" value="0" type="radio">

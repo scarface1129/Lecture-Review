@@ -184,7 +184,6 @@
                                                         <p>(<span>120</span> Review)</p>
                                                     </div>
                                                     <div class="price">
-                                                        <span>$50</span>
                                                     </div>
                                                 </div>
                                             </div>
